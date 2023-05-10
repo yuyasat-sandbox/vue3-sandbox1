@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import AppHeader from "./components/AppHeader.vue";
 
 const answer = computed(() => 1 + 1);
 const message = "ようこそ！";
@@ -18,9 +19,17 @@ const addTodo = () => {
   todos.value.push(newTodo.value);
   newTodo.value = "";
 };
+const removeTodo = (index) => {
+  todos.value.splice(index, 1);
+};
+
 </script>
 <template>
-  <h1>Vue 3</h1>
+  <AppHeader color="blue">
+    <template #title>
+      Todo ツール
+    </template>
+  </AppHeader>
   <p>1 + 1 = {{ answer }}</p>
   <p>お名前は？：<input type="text" size="30" v-model="myName" /></p>
   <p v-text="message" v-bind:style="{ color: welcomeColor }"></p>
