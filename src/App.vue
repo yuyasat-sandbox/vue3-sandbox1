@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import AppHeader from "./components/AppHeader.vue";
+import TodoList from "./components/TodoList.vue";
 
 const answer = computed(() => 1 + 1);
 const message = "ようこそ！";
@@ -46,7 +47,5 @@ const removeTodo = (index) => {
     <input type="text" size="30" v-model="newTodo" />
     <button @click="addTodo()">追加</button>
   </div>
-  <ul>
-    <li v-for="(todo, i) in todos" :key="i">{{ todo }}</li>
-  </ul>
+  <TodoList :todos="todos" @removeTodo="removeTodo" />
 </template>
